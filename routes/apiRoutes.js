@@ -23,4 +23,13 @@ router.post('/new', (req, res) => {
     }).then(submittedTodo => res.send(submittedTodo));
 });
 
+// delete todo
+router.delete("/delete/:id", (req, res) => {
+    db.Todo.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => res.send("success"));
+});
+
 module.exports = router;
