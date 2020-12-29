@@ -7,6 +7,15 @@ router.get("/all", (req, res) => {
     db.Todo.findAll().then(todos => res.send(todos));
 });
 
+// get single todo
+router.get("/find/:id", (req, res) => {
+    db.Todo.findAll({
+        where: {
+            id: req.params.id
+        }
+    }).then(todos => res.send(todos));
+});
+
 // post new todo
 router.post('/new', (req, res) => {
     db.Todo.create({
