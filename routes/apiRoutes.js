@@ -32,4 +32,16 @@ router.delete("/delete/:id", (req, res) => {
     }).then(() => res.send("success"));
 });
 
+// edit todo
+router.put('/edit', (req, res) => {
+    db.Todo.update(
+        {
+            text: req.body.text
+        }, 
+        {
+            where: { id: req.body.id }
+        }
+        ).then(() => res.send("success"));
+});
+
 module.exports = router;
